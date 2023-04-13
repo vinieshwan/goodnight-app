@@ -13,7 +13,7 @@ end
 
 def create_users(users)
     users.each do |user|
-        User.create(name: user['name'])
+        User.create(name: user['name'], api_key: user['api_key'])
     end
 end
 
