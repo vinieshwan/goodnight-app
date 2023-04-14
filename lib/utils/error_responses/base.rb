@@ -3,21 +3,16 @@
 module Utils
     module ErrorResponses
         # Defines logic for base error responses
-        class Base
-            HTTP_CODE = 400
-    
-            def self.create(attribute: nil, detail: nil)
+        class Base    
+            def self.create(detail: nil)
                 error = ErrorResponses::Error.new
         
                 error_payload = {
-                    code: self::CODE,
-                    detail: detail
+                    detail: detail,
+                    status: self::STATUS
                 }
-        
-                error_payload[:attribute] = attribute unless attribute.nil?
-        
+                
                 error.add(error_payload)
-                error.http_code = self::HTTP_CODE
 
                 error
             end

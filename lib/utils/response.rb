@@ -12,13 +12,13 @@ module Utils
             if @response.is_a? ErrorResponses::Error
                 return {
                     json: @response.as_json,
-                    status: @response.http_code
+                    status: @response.status
                 }
             end
     
             {
                 json: @response.as_json,
-                status: @opts[:http_code]
+                status: @opts[:status]
             }
         end
     end

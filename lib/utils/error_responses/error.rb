@@ -5,19 +5,18 @@ module Utils
     module ErrorResponses
         # Defines logic for error handling
         class Error
-            attr_accessor :http_code
+            attr_accessor :status
   
             def initialize
                 @errors = []
-                @http_code = 400
             end
   
-            def add(attribute: '', code: '', detail: '')
+            def add(detail: '', status: '')
                 @errors.push(
-                    attribute: attribute,
-                    code: code,
-                    detail: detail
+                    detail: detail,
                 )
+
+                @status = status
             end
         end
     end

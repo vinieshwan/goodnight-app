@@ -3,21 +3,23 @@
 module BedtimeServices
     # Service to handle user bedtime clockout
     class Clockout < ApplicationService
-        class ResourceNotModifiedError < StandardError; end
+        class BadRequestError < StandardError; end
     
         def initialize(params)
             @user_id = params[:user_id]
         end
 
         def perform
-            raise ResourceNotModifiedError if (time_diff/60/60) >= 24 || bedtime.first.clock_out.present?
+            raise BadRequestError if (time_diff/60/60) >= 24 || bedtime.first.clock_out.present?
 
             bedtime.update(clock_out: now, duration: time_diff)
-        rescue ResourceNotModifiedError
-            Utils::ErrorResponses::ResourceNotModified.create    
+        rescue BadRequestError
+            Utils::ErrorResponses::BadRequest.create(
+                detail: 'You need to login first or your last login is greater than 24 hours ago.'
+            )    
         rescue ActiveRecord::RecordNotFound
             Utils::ErrorResponses::ResourceNotFound.create(
-                detail: "Resource does not exist"
+                detail: 'Resource does not exist'
             )
         end
 

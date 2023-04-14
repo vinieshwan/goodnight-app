@@ -17,7 +17,7 @@ module UserServices
             Utils::ErrorResponses::ResourceNotModified.create
         rescue ActiveRecord::RecordNotFound
             Utils::ErrorResponses::ResourceNotFound.create(
-                detail: "User does not exist"
+                detail: 'User does not exist'
             )
         end
 

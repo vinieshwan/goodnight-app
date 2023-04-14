@@ -4,8 +4,7 @@ module Utils
     module ErrorResponses
         # Error response if a resource is not found
         class ResourceNotFound < Base
-            CODE = :resource_not_found
-            HTTP_CODE = 404
+            STATUS = :not_found
         end
     end
 end
