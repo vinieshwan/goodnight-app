@@ -13,7 +13,9 @@ module UserServices
         def perform
             raise ResourceNotModifiedError if @follower == @followee.to_i
 
-            Follow.create(follower_id: @follower, followee_id: user.id, is_following: true)
+            followed = Follow.create(follower_id: @follower, followee_id: user.id, is_following: true)
+            
+            raise ResourceNotModifiedError if followed.id.nil?
         rescue ResourceNotModifiedError
             Utils::ErrorResponses::ResourceNotModified.create
         rescue ActiveRecord::RecordNotFound

@@ -3,14 +3,18 @@
 module UserServices
     # Service to unfollow a certain user
     class UnfollowUser < ApplicationService
+        class ResourceNotModifiedError < StandardError; end
+
         def initialize(params)
             @follower = params[:follower]
             @followee = params[:followee]
         end
 
         def perform
-            Follow.update({ is_following: false }) if following.present?
-
+            unfollowed = Follow.update({ is_following: false }) if following.present?
+            raise ResourceNotModifiedError unless unfollowed.present?
+        rescue ResourceNotModifiedError
+            Utils::ErrorResponses::ResourceNotModified.create
         rescue ActiveRecord::RecordNotFound
             Utils::ErrorResponses::ResourceNotFound.create(
                 detail: "User does not exist"
