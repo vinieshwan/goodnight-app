@@ -3,9 +3,9 @@
 one:
   follower_id: 1
   followee_id: 1
-  isFollowing: false
+  is_following: false
 
 two:
   follower_id: 1
   followee_id: 1
-  isFollowing: false
+  is_following: false

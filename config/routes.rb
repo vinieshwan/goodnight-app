@@ -3,4 +3,8 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
+  scope :users do
+    post '/:id/follow', to: 'users#follow'
+    put '/:id/unfollow', to: 'users#unfollow'
+  end
 end
