@@ -11,7 +11,7 @@ module UserServices
         end
 
         def perform
-            unfollowed = Follow.update({ is_following: false }) if following.present?
+            unfollowed = following.update({is_following: false}) if following.present?
             raise ResourceNotModifiedError unless unfollowed.present?
         rescue ResourceNotModifiedError
             Utils::ErrorResponses::ResourceNotModified.create

@@ -7,4 +7,10 @@ class BedtimeController < ApplicationController
 
         render Utils::Response.new(response, { http_code: 201 }).to_h
     end
+
+    def out
+        response = BedtimeServices::Clockout.new(user_id: current_user.id).perform
+
+        render Utils::Response.new(response, { http_code: 200 }).to_h
+    end
 end

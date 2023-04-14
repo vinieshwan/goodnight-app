@@ -10,5 +10,6 @@ Rails.application.routes.draw do
 
   scope :bedtime do
     post '/in', to: 'bedtime#in'
+    post '/out', to: 'bedtime#out'
   end
 end
