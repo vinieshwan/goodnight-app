@@ -4,8 +4,10 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
   scope :users do
+    get '/bedtimes', to: 'users#bedtimes'
+
     post '/:id/follow', to: 'users#follow'
-    put '/:id/unfollow', to: 'users#unfollow'
+    post '/:id/unfollow', to: 'users#unfollow'
   end
 
   scope :bedtime do
