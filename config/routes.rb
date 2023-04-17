@@ -3,6 +3,10 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
+  scope :profile do
+    get '/bedtime_logs', to: 'profile#bedtime_logs'
+  end
+
   scope :users do
     get '/bedtimes', to: 'users#bedtimes'
 
