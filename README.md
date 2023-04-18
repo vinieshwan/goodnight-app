@@ -15,13 +15,13 @@ Install dependencies, prepare database, populate users and run rails server
 Note: _This is developed and tested under Ruby 3.2.2_
 
 ### API Endpoints
-- <a href="./#profile-bedtime-logs">Profile bedtime logs</a>
-- <a href="./#profile-followed-users">Profile followed users</a>
-- <a href="./#followed-users-bedtime-logs">Followed users bedtime logs</a>
-- <a href="./#follow-user">Follow user</a>
-- <a href="./#unfollow-user">Unfollow user</a>
-- <a href="./#log-sleep-time">Log sleep time</a>
-- <a href="./#log-wakeup-time">Log wakeup time</a>
+- <a href="#profile-bedtime-logs">Profile bedtime logs</a>
+- <a href="#profile-followed-users">Profile followed users</a>
+- <a href="#followed-users-bedtime-logs">Followed users bedtime logs</a>
+- <a href="#follow-user">Follow user</a>
+- <a href="#unfollow-user">Unfollow user</a>
+- <a href="#log-sleep-time">Log sleep time</a>
+- <a href="#log-wakeup-time">Log wakeup time</a>
 
 
 #### Profile bedtime logs
