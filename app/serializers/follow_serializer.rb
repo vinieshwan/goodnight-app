@@ -9,7 +9,7 @@ class FollowSerializer < ApplicationSerializer
   def serializable_hash
     return response({ errors: @response.errors }) if @response.try(:errors).present?
 
-    response(@response)
+    response({ users: @response })
   end
 
   private
