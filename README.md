@@ -2,7 +2,7 @@
 An app that would track a user's sleep and wakeup time
 
 
-### Installation
+## Installation
 In your terminal, clone the repo
 ```sh
     $ git clone git@github.com:vinieshwan/goodnight-app.git
@@ -14,7 +14,7 @@ Install dependencies, prepare database, populate users and run rails server
 ```
 Note: _This is developed and tested under Ruby 3.2.2_
 
-### API Endpoints
+## API Endpoints
 - <a href="#profile-bedtime-logs">Profile bedtime logs</a>
 - <a href="#profile-followed-users">Profile followed users</a>
 - <a href="#followed-users-bedtime-logs">Followed users bedtime logs</a>
@@ -24,7 +24,7 @@ Note: _This is developed and tested under Ruby 3.2.2_
 - <a href="#log-wakeup-time">Log wakeup time</a>
 
 
-#### Profile bedtime logs
+### Profile bedtime logs
 Display the user's bedtime logs
 
 <table>
@@ -50,7 +50,7 @@ http://localhost:&lt;PORT&gt;/profile/bedtime_logs</pre>
 
 <table>
     <tr>
-        <th>Response status codes and schema</th>
+        <th>Response status codes</th>
     </tr>
     <tr>
         <td>
@@ -61,10 +61,10 @@ http://localhost:&lt;PORT&gt;/profile/bedtime_logs</pre>
             <code>401</code> - Unauthorized<br />
         </td>
     </tr>
-    <tr>
-        <td>
-            Response schema<br />
-            <pre>
+</table>
+
+<strong>Response schema</strong>
+<pre>
 {
   "type": "object",
   "properties": {
@@ -119,12 +119,10 @@ http://localhost:&lt;PORT&gt;/profile/bedtime_logs</pre>
       }
     }
   }
-}</pre>
-        </td>
-    </tr>
-</table>
+}
+</pre>
 
-#### Profile followed users
+### Profile followed users
 Display the user's followed users
 
 <table>
@@ -150,7 +148,7 @@ http://localhost:&lt;PORT&gt;/profile/following</pre>
 
 <table>
     <tr>
-        <th>Response status codes and schema</th>
+        <th>Response status codes</th>
     </tr>
     <tr>
         <td>
@@ -161,10 +159,9 @@ http://localhost:&lt;PORT&gt;/profile/following</pre>
             <code>401</code> - Unauthorized<br />
         </td>
     </tr>
-    <tr>
-        <td>
-            Response schema<br />
-            <pre>
+</table>
+<strong>Response schema</strong>
+<pre>
 {
   "type": "object",
   "properties": {
@@ -196,12 +193,10 @@ http://localhost:&lt;PORT&gt;/profile/following</pre>
       }
     }
   }
-}</pre>
-        </td>
-    </tr>
-</table>
+}
+</pre>
 
-#### Followed users bedtime logs
+### Followed users bedtime logs
 Display the bedtime logs of all followed users
 
 <table>
@@ -227,7 +222,7 @@ http://localhost:&lt;PORT&gt;/users/bedtime_logs</pre>
 
 <table>
     <tr>
-        <th>Response status codes and schema</th>
+        <th>Response status codes</th>
     </tr>
     <tr>
         <td>
@@ -238,10 +233,9 @@ http://localhost:&lt;PORT&gt;/users/bedtime_logs</pre>
             <code>401</code> - Unauthorized<br />
         </td>
     </tr>
-    <tr>
-        <td>
-            Response schema<br />
-            <pre>
+</table>
+<strong>Response schema</strong>
+<pre>
 {
   "type": "object",
   "properties": {
@@ -296,13 +290,10 @@ http://localhost:&lt;PORT&gt;/users/bedtime_logs</pre>
       }
     }
   }
-}</pre>
-        </td>
-    </tr>
-</table>
+}
+</pre>
 
-
-#### Follow user
+### Follow user
 Follow a user
 
 <table>
@@ -329,7 +320,7 @@ http://localhost:&lt;PORT&gt;/users/:&lt;ID&gt;/follow</pre>
 
 <table>
     <tr>
-        <th>Response status codes and schema</th>
+        <th>Response status codes</th>
     </tr>
     <tr>
         <td>
@@ -348,7 +339,7 @@ http://localhost:&lt;PORT&gt;/users/:&lt;ID&gt;/follow</pre>
     </tr>
 </table>
 
-#### Unfollow user
+### Unfollow user
 Unfollow a user
 
 <table>
@@ -375,7 +366,7 @@ http://localhost:&lt;PORT&gt;/users/:&lt;ID&gt;/unfollow</pre>
 
 <table>
     <tr>
-        <th>Response status codes and schema</th>
+        <th>Response status codes</th>
     </tr>
     <tr>
         <td>
@@ -394,7 +385,7 @@ http://localhost:&lt;PORT&gt;/users/:&lt;ID&gt;/unfollow</pre>
     </tr>
 </table>
 
-#### Log sleep time
+### Log sleep time
 Clock in when logging the sleep time
 
 <table>
@@ -421,7 +412,7 @@ http://localhost:&lt;PORT&gt;/bedtime/in</pre>
 
 <table>
     <tr>
-        <th>Response status codes and schema</th>
+        <th>Response status codes</th>
     </tr>
     <tr>
         <td>
@@ -432,10 +423,9 @@ http://localhost:&lt;PORT&gt;/bedtime/in</pre>
             <code>401</code> - Unauthorized<br />
         </td>
     </tr>
-    <tr>
-        <td>
-            Response schema<br />
-            <pre>
+</table>
+<strong>Response schema</strong>
+<pre>
 {
   "type": "object",
   "properties": {
@@ -490,12 +480,10 @@ http://localhost:&lt;PORT&gt;/bedtime/in</pre>
       }
     }
   }
-}</pre>
-        </td>
-    </tr>
-</table>
+}
+</pre>
 
-#### Log wakeup time
+### Log wakeup time
 Clock out when logging the wake up time
 
 <table>
@@ -522,7 +510,7 @@ http://localhost:&lt;PORT&gt;/bedtime/out</pre>
 
 <table>
     <tr>
-        <th>Response status codes and schema</th>
+        <th>Response status codes</th>
     </tr>
     <tr>
         <td>
@@ -534,10 +522,9 @@ http://localhost:&lt;PORT&gt;/bedtime/out</pre>
             <code>401</code> - Unauthorized<br />
         </td>
     </tr>
-    <tr>
-        <td>
-            Response schema<br />
-            <pre>
+</table>
+<strong>Response schema</strong>
+<pre>
 {
   "type": "object",
   "properties": {
@@ -592,7 +579,5 @@ http://localhost:&lt;PORT&gt;/bedtime/out</pre>
       }
     }
   }
-}</pre>
-        </td>
-    </tr>
-</table>
+}
+</pre>
