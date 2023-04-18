@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   # root "articles#index"
   scope :profile do
     get '/bedtime_logs', to: 'profile#bedtime_logs'
+    get '/following', to: 'profile#following'
   end
 
   scope :users do

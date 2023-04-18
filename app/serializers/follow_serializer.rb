@@ -8,6 +8,8 @@ class FollowSerializer < ApplicationSerializer
 
   def serializable_hash
     return response({ errors: @response.errors }) if @response.try(:errors).present?
+
+    response(@response)
   end
 
   private
