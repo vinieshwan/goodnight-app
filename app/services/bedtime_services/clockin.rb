@@ -8,9 +8,9 @@ module BedtimeServices
         end
 
         def perform
-            Bedtime.create(user_id: user.id, clock_in: now, created_at: now)
+            Bedtime.create(user_id: @user_id, clock_in: now, created_at: now)
 
-            bedtimes
+            user_logs
             
         rescue ActiveRecord::RecordNotFound
             Utils::ErrorResponses::ResourceNotFound.create(
@@ -20,16 +20,12 @@ module BedtimeServices
 
         private
 
-        def bedtimes
-            @bedtimes ||= Bedtime.where(user_id: @user_id).order(created_at: :desc)
-        end
-
         def now
             @now ||= DateTime.now
         end
 
-        def user
-            @user ||= User.find(@user_id)
+        def user_logs
+            @user_logs ||= User.joins(:bedtimes).where(id: @user_id).select('users.id, users.name, bedtimes.clock_in, bedtimes.clock_out, bedtimes.duration, bedtimes.created_at').order('bedtimes.created_at': :desc)
         end
     end
 end

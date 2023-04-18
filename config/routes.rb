@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   end
 
   scope :users do
-    get '/bedtimes', to: 'users#bedtimes'
+    get '/bedtime_logs', to: 'users#bedtime_logs'
 
     post '/:id/follow', to: 'users#follow'
     post '/:id/unfollow', to: 'users#unfollow'

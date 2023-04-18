@@ -8,7 +8,7 @@ module ProfileServices
         end
 
         def perform
-            sleep_log
+            user_logs
 
         rescue ActiveRecord::RecordNotFound
             Utils::ErrorResponses::ResourceNotFound.create(
@@ -18,12 +18,8 @@ module ProfileServices
 
         private
 
-        def sleep_log
-            @sleep_log ||= Bedtime.where(user_id: @user_id).order(created_at: :desc)
-        end
-
-        def user
-            @user ||= User.find(@user_id)
+        def user_logs
+            @user_logs ||= User.joins(:bedtimes).where(id: @user_id).select('users.id, users.name, bedtimes.clock_in, bedtimes.clock_out, bedtimes.duration, bedtimes.created_at').order('bedtimes.created_at': :desc)
         end
     end
 end

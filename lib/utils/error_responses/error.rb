@@ -11,12 +11,12 @@ module Utils
                 @errors = []
             end
   
-            def add(detail: '', status: '')
+            def add(data)
                 @errors.push(
-                    detail: detail,
+                    detail: data[:detail],
                 )
 
-                @status = status
+                @status = data[:status]
             end
         end
     end

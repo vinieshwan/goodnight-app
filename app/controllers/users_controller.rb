@@ -2,10 +2,10 @@
 
 # Users controller
 class UsersController < ApplicationController
-    def bedtimes
-        response = UserServices::Bedtimes.new(user_id: current_user.id).perform
+    def bedtime_logs
+        response = UserServices::BedtimeLogs.new(user_id: current_user.id).perform
 
-        render Utils::Response.new(response, { status: :ok }).to_h
+        render Utils::Response.new(response, { status: :ok }, BedtimeSerializer).to_h
     end
 
     def follow

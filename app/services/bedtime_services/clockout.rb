@@ -13,6 +13,8 @@ module BedtimeServices
             raise BadRequestError if (time_diff/60/60) >= 24 || bedtime.first.clock_out.present?
 
             bedtime.update(clock_out: now, duration: time_diff)
+
+            user_log
         rescue BadRequestError
             Utils::ErrorResponses::BadRequest.create(
                 detail: 'You need to login first or your last login is greater than 24 hours ago.'
@@ -27,6 +29,10 @@ module BedtimeServices
 
         def bedtime
             Bedtime.where(user_id: @user_id).order(clock_in: :desc).limit(1)
+        end
+
+        def user_log
+            @user_log ||= User.joins(:bedtimes).where('bedtimes.id': bedtime.first.id).select('users.id, users.name, bedtimes.clock_in, bedtimes.clock_out, bedtimes.duration, bedtimes.created_at')
         end
 
         def time_diff
