@@ -5,7 +5,7 @@ module Utils
     module ErrorResponses
         # Defines logic for error handling
         class Error
-            attr_accessor :status
+            attr_accessor :errors, :status
   
             def initialize
                 @errors = []

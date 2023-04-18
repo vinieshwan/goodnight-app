@@ -9,6 +9,8 @@ class BedtimeSerializer < ApplicationSerializer
     def serializable_hash
         user = []
 
+        return response({ errors: @response.errors }) if @response.try(:errors).present?
+
         @response.each do |data|
             matched_user_index = user.find_index { |element| element[:id] == data.id }
             if matched_user_index && matched_user_index != -1
@@ -18,9 +20,17 @@ class BedtimeSerializer < ApplicationSerializer
             end
         end
 
+        response({ users: user })
+    end
+
+    private
+
+    def response(attributes)
         {
-            type: 'users_bedtime_logs',
-            users: user
+            data: {
+                type: 'users_bedtime_logs',
+                attributes: attributes
+            }
         }.as_json
     end
 end

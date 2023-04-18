@@ -19,11 +19,13 @@ class ApplicationController < ActionController::API
             
             @current_user = user
         end
+
+        return not_authorized if @current_user.nil?
     end
 
     def not_authorized
         render status: :unauthorized, json: {
-          errors: ['You are not authorized to perform this action']
+          errors: [{ detail: 'You are not authorized to perform this action' }].as_json
         }
     end  
 end

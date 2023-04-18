@@ -12,13 +12,13 @@ module Utils
         def to_h
             if @response.is_a? ErrorResponses::Error
                 return {
-                    json: @response.as_json,
+                    json: @serializer.new(@response).serializable_hash,
                     status: @response.status
                 }
             end
     
             {
-                json: @serializer.nil? ? @response.as_json : @serializer.new(@response).serializable_hash,
+                json: @serializer.new(@response).serializable_hash,
                 status: @opts[:status]
             }
         end
