@@ -2,12 +2,8 @@
 
 one:
   user_id: 1
-  clock_in: 2023-04-12 22:46:37
-  clock_out: 2023-04-12 22:46:37
-  duration: 1
+  clock_in: <%= 10.minutes.ago %>
 
 two:
   user_id: 1
-  clock_in: 2023-04-12 22:46:37
-  clock_out: 2023-04-12 22:46:37
-  duration: 1
+  clock_in: <%= 25.hours.ago %>

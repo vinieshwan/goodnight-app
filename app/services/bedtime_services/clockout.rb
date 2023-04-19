@@ -11,7 +11,7 @@ module BedtimeServices
 
     # rubocop:todo Metrics/MethodLength
     def perform
-      raise BadRequestError if (time_diff / 60 / 60) >= 24 || bedtime.first.clock_out.present?
+      raise BadRequestError if bedtime.first.try(:clock_in).nil? || (time_diff / 60 / 60) >= 24 || bedtime.first.clock_out.present?
 
       bedtime.update(clock_out: now, duration: time_diff)
 
@@ -41,7 +41,7 @@ module BedtimeServices
     # rubocop:enable Layout/LineLength
 
     def time_diff
-      now.to_i - bedtime.first.clock_in.to_i
+      now.to_i - bedtime.first.try(:clock_in).to_i
     end
 
     def now
